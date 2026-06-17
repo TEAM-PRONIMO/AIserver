@@ -46,6 +46,14 @@
 1. **발음 분석**: 녹음/프레임 업로드 → S3 저장 → `/analyze` 호출 → 음성·입모양 점수 융합 → 분석 텍스트 반환.
 2. **캐릭터 음성 피드백**: 분석 텍스트 → `/feedback-wav` 호출 → GPT-4o-mini 피드백 + Supertone TTS 음성(base64 WAV) 반환.
 
+## 실제 시현 결과 — 발음 분석 기능
+
+사용자가 녹음을 시작하면 음성 데이터와 MediaPipe 얼굴 랜드마크 데이터가 함께 수집되고, 제출 시 음성 파일과 프레임 데이터가 AI 서버로 전송된다. AI 서버는 전체 점수·음성 점수·입모양 점수·인식된 텍스트·피드백 문장을 반환하며, 프론트엔드는 음성 분석 결과와 입모양 분석 결과를 분리해 표시해 사용자가 문제점을 구체적으로 파악할 수 있도록 한다.
+
+| 문제 화면 (녹음) | 피드백 화면 (분석 결과) |
+|---|---|
+| ![Recording Screen](docs/images/demo_recording.png) | ![Feedback Screen](docs/images/demo_feedback.png) |
+
 ## 엔드포인트
 
 - `POST /analyze` — 오디오(S3 presigned URL) + 프레임(MediaPipe landmarks/blendshapes)을 받아 음성·시각 점수를 융합해 반환.
