@@ -31,6 +31,21 @@
 
 `Web UI`(Presentation) → `Pronimo Backend API`(Application) → `AI Analysis Server`가 음성 발음 분석·MediaPipe 입모양 분석·종합 점수 계산·피드백 생성을 담당하고, `MySQL`(사용자/세션/점수/피드백 로그)과 `AWS S3`(녹음 파일·합성 음성)에 결과를 저장한다.
 
+### 배포·기술 스택
+
+![Deployment Stack](docs/images/deployment_stack.png)
+
+`React + Three.js`(FE) ↔ `Spring Boot`(Backend) ↔ `FastAPI`(AI Worker) 3개 서비스가 통신하며, Backend는 `MySQL`·`Amazon S3`를 사용하고 AI Worker는 `Azure Speech`(발음평가) · `Supertone`(TTS) · `OpenAI`(피드백 생성)를 외부 API로 호출한다.
+
+### 요청 흐름 (Sequence)
+
+![Sequence Flow](docs/images/sequence_flow.png)
+
+클라이언트(MediaPipe FaceLandmarker + WAV Recorder) → 프론트엔드(Vercel) → 백엔드(EC2, Spring Boot) → AI 서버(EC2, FastAPI)로 이어지는 두 시나리오:
+
+1. **발음 분석**: 녹음/프레임 업로드 → S3 저장 → `/analyze` 호출 → 음성·입모양 점수 융합 → 분석 텍스트 반환.
+2. **캐릭터 음성 피드백**: 분석 텍스트 → `/feedback-wav` 호출 → GPT-4o-mini 피드백 + Supertone TTS 음성(base64 WAV) 반환.
+
 ## 엔드포인트
 
 - `POST /analyze` — 오디오(S3 presigned URL) + 프레임(MediaPipe landmarks/blendshapes)을 받아 음성·시각 점수를 융합해 반환.
