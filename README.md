@@ -15,6 +15,7 @@
 
 <p align="center">
   <a href="#project-overview"><strong>Overview</strong></a> ·
+  <a href="#demo"><strong>Demo</strong></a> ·
   <a href="#my-role--contribution"><strong>My Contribution</strong></a> ·
   <a href="#ai-core-pipeline"><strong>AI Pipeline</strong></a> ·
   <a href="#api"><strong>API</strong></a> ·
@@ -24,6 +25,19 @@
 Pronimo는 사용자의 **음성**과 웹캠에서 수집한 **입모양**을 함께 분석하는 영어 발음 교정 서비스입니다. AI 서버는 Azure가 반환한 음소별 시간 정보와 MediaPipe 프레임을 동일한 시간축에서 정렬하고, phoneme-viseme 매핑을 기반으로 발음 오류를 구분합니다.
 
 분석 결과는 음성 점수, 입모양 점수, 종합 점수와 한국어 교정 문장으로 제공되며, 프론트엔드의 3D 구강 모델과 캐릭터 음성 피드백으로 연결됩니다.
+
+## Demo
+
+<p align="center">
+  <a href="pronimo-demo-video.zip">
+    <img src="docs/images/demo_recording.png" width="92%" alt="Pronimo project demo video thumbnail" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="pronimo-demo-video.zip"><strong>▶ 전체 시연 영상 다운로드 (.zip, 25 MB)</strong></a><br />
+  <sub>녹화 → 음성·입모양 분석 → 음소별 교정 피드백으로 이어지는 전체 사용자 흐름</sub>
+</p>
 
 <p align="center">
   <img src="docs/images/demo_feedback.png" width="92%" alt="Pronimo pronunciation analysis result" />
