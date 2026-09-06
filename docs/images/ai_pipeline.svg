@@ -1,0 +1,105 @@
+<svg width="1600" height="760" viewBox="0 0 1600 760" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Pronimo AI analysis pipeline</title>
+  <desc id="desc">The audio and visual analysis stages from request to feedback</desc>
+  <defs>
+    <linearGradient id="panel" x1="60" y1="0" x2="1540" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#08182C"/>
+      <stop offset="1" stop-color="#102C57"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#4EDCFF"/>
+      <stop offset="1" stop-color="#607DFF"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#020711" flood-opacity="0.35"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#6582AA"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="760" rx="30" fill="url(#panel)"/>
+  <text x="80" y="84" fill="#FFFFFF" font-family="Inter, Pretendard, Arial, sans-serif" font-size="38" font-weight="800">AI Analysis Pipeline</text>
+  <text x="80" y="122" fill="#91A9CC" font-family="Inter, Pretendard, Arial, sans-serif" font-size="19">음성의 시간 정보와 입모양의 공간 정보를 하나의 발음 피드백으로 결합합니다.</text>
+
+  <g font-family="Inter, Pretendard, Arial, sans-serif" filter="url(#shadow)">
+    <g transform="translate(72 206)">
+      <rect width="240" height="118" rx="22" fill="#102B4C" stroke="#5FDFFF" stroke-opacity="0.52"/>
+      <text x="26" y="38" fill="#6BE4FF" font-size="14" font-weight="750" letter-spacing="1.5">INPUT · AUDIO</text>
+      <text x="26" y="72" fill="#FFFFFF" font-size="22" font-weight="700">S3 Presigned URL</text>
+      <text x="26" y="98" fill="#9CB2D2" font-size="15">WAV · max 25 MB</text>
+    </g>
+
+    <g transform="translate(72 410)">
+      <rect width="240" height="118" rx="22" fill="#102B4C" stroke="#8497FF" stroke-opacity="0.55"/>
+      <text x="26" y="38" fill="#A7B3FF" font-size="14" font-weight="750" letter-spacing="1.5">INPUT · VISION</text>
+      <text x="26" y="72" fill="#FFFFFF" font-size="22" font-weight="700">MediaPipe Frames</text>
+      <text x="26" y="98" fill="#9CB2D2" font-size="15">timestamp + landmarks</text>
+    </g>
+
+    <g transform="translate(398 206)">
+      <rect width="270" height="118" rx="22" fill="#102B4C" stroke="#5FDFFF" stroke-opacity="0.44"/>
+      <text x="26" y="38" fill="#6BE4FF" font-size="14" font-weight="750" letter-spacing="1.5">SPEECH ANALYSIS</text>
+      <text x="26" y="72" fill="#FFFFFF" font-size="22" font-weight="700">Azure PA</text>
+      <text x="26" y="98" fill="#9CB2D2" font-size="15">phoneme · offset · N-best</text>
+    </g>
+
+    <g transform="translate(398 410)">
+      <rect width="270" height="118" rx="22" fill="#102B4C" stroke="#8497FF" stroke-opacity="0.48"/>
+      <text x="26" y="38" fill="#A7B3FF" font-size="14" font-weight="750" letter-spacing="1.5">FEATURE EXTRACTION</text>
+      <text x="26" y="72" fill="#FFFFFF" font-size="22" font-weight="700">17 Visual Features</text>
+      <text x="26" y="98" fill="#9CB2D2" font-size="15">normalized 0 – 1</text>
+    </g>
+
+    <g transform="translate(752 310)">
+      <rect width="252" height="142" rx="25" fill="#112F55" stroke="url(#blue)" stroke-width="2"/>
+      <text x="126" y="42" fill="#79E5FF" font-size="14" font-weight="750" text-anchor="middle" letter-spacing="1.5">TEMPORAL ALIGNMENT</text>
+      <text x="126" y="82" fill="#FFFFFF" font-size="25" font-weight="800" text-anchor="middle">Phoneme Window</text>
+      <text x="126" y="113" fill="#B6C6E0" font-size="17" text-anchor="middle">offset / duration ±80 ms</text>
+    </g>
+
+    <g transform="translate(1087 206)">
+      <rect width="220" height="118" rx="22" fill="#102B4C" stroke="#5FDFFF" stroke-opacity="0.44"/>
+      <text x="24" y="38" fill="#6BE4FF" font-size="14" font-weight="750" letter-spacing="1.5">AUDIO SCORE</text>
+      <text x="24" y="72" fill="#FFFFFF" font-size="21" font-weight="700">Phoneme Accuracy</text>
+      <text x="24" y="98" fill="#9CB2D2" font-size="15">error type + fluency</text>
+    </g>
+
+    <g transform="translate(1087 410)">
+      <rect width="220" height="118" rx="22" fill="#102B4C" stroke="#8497FF" stroke-opacity="0.48"/>
+      <text x="24" y="38" fill="#A7B3FF" font-size="14" font-weight="750" letter-spacing="1.5">VISUAL SCORE</text>
+      <text x="24" y="72" fill="#FFFFFF" font-size="21" font-weight="700">Viseme Match</text>
+      <text x="24" y="98" fill="#9CB2D2" font-size="15">reliability weighted</text>
+    </g>
+
+    <g transform="translate(1390 310)">
+      <rect width="150" height="142" rx="25" fill="url(#blue)" fill-opacity="0.18" stroke="#73B7FF" stroke-width="2"/>
+      <text x="75" y="42" fill="#89DFFF" font-size="14" font-weight="750" text-anchor="middle" letter-spacing="1.5">FUSION</text>
+      <text x="75" y="82" fill="#FFFFFF" font-size="26" font-weight="800" text-anchor="middle">75 : 25</text>
+      <text x="75" y="112" fill="#B6C6E0" font-size="14" text-anchor="middle">confidence-aware</text>
+    </g>
+  </g>
+
+  <g stroke="#6582AA" stroke-width="3" fill="none" marker-end="url(#arrow)">
+    <path d="M312 265H382"/>
+    <path d="M312 469H382"/>
+    <path d="M668 265H706C728 265 728 355 752 355"/>
+    <path d="M668 469H706C728 469 728 407 752 407"/>
+    <path d="M1004 355H1037C1059 355 1059 265 1087 265"/>
+    <path d="M1004 407H1037C1059 407 1059 469 1087 469"/>
+    <path d="M1307 265H1340C1362 265 1362 355 1390 355"/>
+    <path d="M1307 469H1340C1362 469 1362 407 1390 407"/>
+  </g>
+
+  <g transform="translate(380 626)" font-family="Inter, Pretendard, Arial, sans-serif">
+    <rect width="840" height="72" rx="20" fill="#FFFFFF" fill-opacity="0.055" stroke="#FFFFFF" stroke-opacity="0.12"/>
+    <text x="34" y="31" fill="#7C96BD" font-size="13" font-weight="750" letter-spacing="1.5">OUTPUT</text>
+    <text x="34" y="54" fill="#FFFFFF" font-size="17" font-weight="650">0–10 Score</text>
+    <circle cx="205" cy="37" r="3" fill="#5FDFFF"/>
+    <text x="225" y="44" fill="#FFFFFF" font-size="17" font-weight="650">Korean Feedback</text>
+    <circle cx="434" cy="37" r="3" fill="#8497FF"/>
+    <text x="454" y="44" fill="#FFFFFF" font-size="17" font-weight="650">Character TTS</text>
+    <circle cx="632" cy="37" r="3" fill="#5FDFFF"/>
+    <text x="652" y="44" fill="#FFFFFF" font-size="17" font-weight="650">A/V Diagnosis</text>
+  </g>
+</svg>
