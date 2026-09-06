@@ -192,8 +192,18 @@ fused = effective_audio_weight × audio_score
 Pronimo는 Frontend, Backend, AI Server가 분리된 구조입니다. 이 저장소의 책임 범위는 **AI 분석·융합·피드백 생성**이며, 인증·학습 세션·영속화는 Spring Boot Backend가 담당합니다.
 
 <p align="center">
-  <img src="docs/images/system_architecture.png" width="92%" alt="Pronimo system architecture" />
+  <img src="docs/images/system_architecture_main.png" width="100%" alt="Pronimo full system architecture" />
 </p>
+
+<p align="center"><sub>전체 시스템 구성: React·Three.js, Spring Boot, FastAPI AI Worker, MySQL·S3 및 외부 AI 서비스 연동</sub></p>
+
+### AI Server Responsibility
+
+<p align="center">
+  <img src="docs/images/system_architecture.png" width="92%" alt="Pronimo AI server responsibility architecture" />
+</p>
+
+<p align="center"><sub>보조 구성도: 전체 서비스에서 AI 서버가 담당하는 분석·점수 융합·피드백 생성 범위</sub></p>
 
 | 계층 | 기술 | 책임 |
 |---|---|---|
@@ -201,6 +211,8 @@ Pronimo는 Frontend, Backend, AI Server가 분리된 구조입니다. 이 저장
 | Backend | Spring Boot, MySQL, AWS S3 | 인증, 세션, 오디오 저장, AI 서버 중계, 결과 저장 |
 | **AI Server** | **FastAPI, Python** | **음성·입모양 분석, 점수 융합, 피드백·TTS 생성** |
 | External AI | Azure Speech, OpenAI, Supertone | 발음 평가, 문장 생성, 음성 합성 |
+
+발표 원본: [`cap발표.pptx`](제출자료/cap발표.pptx)
 
 <details>
 <summary><strong>상세 요청 시퀀스 보기</strong></summary>
